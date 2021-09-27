@@ -19,3 +19,4 @@ function p3dlite_extension($file) {
 	return $ext;
 } 
 ```
+These functions make sure to take only the base file name and pass it to the function `fopen()`, so trying to upload a file with malicious name like: "../shell.php" won't work.
