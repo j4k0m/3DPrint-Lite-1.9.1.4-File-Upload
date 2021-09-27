@@ -1,0 +1,25 @@
+/** Easy As Pie Responsive Navigation Plugin - Version 1.1
+
+ The MIT License (MIT)
+
+ * Copyright (c) 2014 Chris Divyak
+
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+*/
+!function(s){s.fn.extend({easyPie:function(n){var e={icon:"+",navClass:"applePie",collapseClass:"pieCollapse",slideTop:!0},n=s.extend(e,n);return this.each(function(){function e(n){s("html,body").delay(500).animate({scrollTop:s(n).offset().top-48},"fast")}var i=n;s(window).width()>800&&s("."+i.navClass).superfish({delay:0,speed:"fast"}),s(window).width()<=800&&(s("li").find("ul").addClass(i.collapseClass),s("."+i.navClass+"span").remove(),s("ul."+i.collapseClass).before("<span>"+i.icon+"</span>")),s(window).on("resize",function(){s(window).width()<=800&&(s("."+i.navClass+" li span").unbind("click").click(function(n){return n.preventDefault(),s(this).next().slideToggle(function(){s(this).parent().toggleClass("menuOpen")}),1==i.slideTop?(e(s(this)),!1):!1}),s("."+i.navClass).superfish("destroy"),s("."+i.navClass+" li span").length<1&&s("."+i.navClass+" li > ul").before("<span>"+i.icon+"</span>"),/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)&&s("."+i.navClass+" ul ul:first").show()),s(window).width()>800&&(s("."+i.navClass+" ul:first").show(),s("."+i.navClass).superfish({delay:0,speed:"fast"}))}),s("."+i.navClass+" li span, .menubtn").unbind("click").click(function(n){return n.preventDefault(),s(this).next("ul").slideToggle(function(){s(this).parent().toggleClass("menuOpen")}),s("."+i.navClass+"ul:first").is(":visible")&&s(".menubtn").addClass("menuOpen"),s("."+i.navClass+"ul:first").is(":hidden")&&s(".menubtn").removeClass("menuOpen"),1==i.slideTop?(e(s(this)),!1):!1})})}})}(jQuery),jQuery(window).on("hashchange",function(){jQuery(window).width()<=800&&jQuery("#nav").slideToggle()});
