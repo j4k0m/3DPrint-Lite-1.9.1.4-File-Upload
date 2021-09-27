@@ -27,3 +27,22 @@ These functions make sure to take only the base file name and pass it to the fun
 {"jsonrpc":"2.0","filename":"1632779012_test.php_.jpg"}%
 ☁  3DPrint-Lite-1.9.1.4-File-Upload [main] ⚡
 ```
+The attacker will not be able to access the uploaded files that match the FilesMatch regex in the `.htaccess` file in `/wp-content/uploads/p3d/`.
+```
+AddType application/octet-stream obj
+AddType application/octet-stream stl
+<ifmodule mod_deflate.c>
+        AddOutputFilterByType DEFLATE application/octet-stream
+</ifmodule>
+<FilesMatch "\.(php([0-9]|s)?|s?p?html|cgi|py|pl|exe)$">
+        Order Deny,Allow
+        Deny from all
+</FilesMatch>
+<ifmodule mod_expires.c>
+        ExpiresActive on
+        ExpiresDefault "access plus 365 days"
+</ifmodule>
+<ifmodule mod_headers.c>
+        Header set Cache-Control "max-age=31536050"
+</ifmodule>
+```
