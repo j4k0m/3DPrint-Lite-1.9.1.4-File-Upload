@@ -51,4 +51,4 @@ AddType application/octet-stream stl
 So getting Remote Code Execution in the target host is not part of this vulnerability.
 
 ## Summary:
-In the end this vulnerability has a small impact in the target, and it can be only exploited to upload non-harmful files in the host target.
+In the end this vulnerability has a low impact in the target, and it can be only exploited to upload non-harmful files in the host target.
